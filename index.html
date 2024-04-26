@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatToEat</title>
+</head>
+<body style="margin: 20px; background-color:antiquewhite;">
+  <h1 style="color: rgb(34, 34, 34)">What to Eat?</h1>
+  <div style="display:flex;">
+    <div id="map" style="width: 640px; height: 640px; border-radius: 12px;"></div>
+  </div>
+  <script>
+      let map;
+      let currentPostion; // location
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat:23.553118, lng: 121.0211024},
+          zoom: 7
+        })
+        navigator.geolocation.getCurrentPosition(position => {
+          currentPostion = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+          map.setCenter(currentPostion);
+          map.setZoom(16);
+        })
+      }
+  </script>
+  <script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9iOkHFBHFwuhP-YGp5o6-6wp3x0FvQUY&libraries=places&region=TW&language=zh-TW&callback=initMap">
+  </script> 
+</body>
+</html>
